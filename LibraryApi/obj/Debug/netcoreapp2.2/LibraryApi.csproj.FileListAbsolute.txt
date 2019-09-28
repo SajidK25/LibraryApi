@@ -1,0 +1,14 @@
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryApi.deps.json
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryApi.runtimeconfig.json
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryApi.runtimeconfig.dev.json
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryApi.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryApi.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.csprojAssemblyReference.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.csproj.CoreCompileInputs.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.RazorAssemblyInfo.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.RazorAssemblyInfo.cs
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.AssemblyInfoInputs.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.AssemblyInfo.cs
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.RazorTargetAssemblyInfo.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.pdb
