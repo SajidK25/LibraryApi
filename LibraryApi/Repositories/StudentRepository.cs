@@ -43,6 +43,19 @@ namespace LibraryApi.Repositories
             _context.SaveChanges();
         }
 
+        public decimal CheckFine(int? studentId)
+        {
+            return _context.Students
+                    .Where(s => s.StudentID == studentId)
+                    .Select(s => s.FineAmount)
+                    .FirstOrDefault();
+        }
 
+        public void ReceiveFine(Student student, decimal paymentAmount)
+        {
+            student.FineAmount = paymentAmount;
+            _context.Students.Update(student);
+            _context.SaveChanges();
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace LibraryApi.Controllers
         {
         }
 
-        // POST api/Library/book/SaveBook
+        // POST api/Library/IssueBookToMember
         [HttpPost("/api/Library/IssueBookToMember")]
         public ActionResult IssueBook([FromBody]BookIssue bookIssue)
         {
@@ -94,7 +94,7 @@ namespace LibraryApi.Controllers
             }
         }
 
-        // POST api/Library/book/SaveBook
+        // POST api/Library/ReturnBookFromMember
         [HttpPost("/api/Library/ReturnBookFromMember")]
         public ActionResult ReturnBook([FromBody]ReturnBook returnBook)
         {

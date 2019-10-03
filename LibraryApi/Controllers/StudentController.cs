@@ -94,7 +94,7 @@ namespace LibraryApi.Controllers
             }
         }
 
-        // DELETE api/values/5
+        // DELETE /api/student/RemoveStudent
         [HttpDelete("/api/student/RemoveStudent")]
         public ActionResult StudentRemove(Student student)
         {
@@ -110,6 +110,52 @@ namespace LibraryApi.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+
+        // GET api/student/CheckStudent
+        [HttpGet("/api/student/CheckFineAmount")]
+        public ActionResult CheckFineAmount(int? studentId)
+        {
+            if (studentId == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var FineAmount = _studentService.CheckFineAmount(studentId);
+                if (FineAmount > 0)
+                    return Ok(FineAmount);
+                return NotFound(FineAmount);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        // PUT /api/student/ReceiveStudentFine
+        [HttpPut("/api/student/ReceiveStudentFine")]
+        public ActionResult FineUpdate(int studentId, decimal paymentAmount, [FromBody] Student student)
+        {
+            try
+            {
+                var fineAmount = _studentService.CheckFineAmount(studentId);
+                var RemainingFineBalance = _studentService.RemainingFineBalance(fineAmount, paymentAmount);
+
+                if (paymentAmount > RemainingFineBalance)
+                {
+                    return NotFound("Sorry!! Your Payment is greater then Balance.");
+                }
+                else
+                {
+                    _studentService.ReceiveStudentFine(student, RemainingFineBalance);
+                    return Ok();
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }
