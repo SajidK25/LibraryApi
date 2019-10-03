@@ -7,7 +7,7 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/sajidMacPro/.nuget/packages/</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/sajidMacPro/.nuget/packages/;/usr/local/share/dotnet/sdk/NuGetFallbackFolder</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.1.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.3.0</NuGetToolVersion>
   </PropertyGroup>
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -22,6 +22,7 @@
     <Import Project="/usr/local/share/dotnet/sdk/NuGetFallbackFolder/microsoft.aspnetcore.app/2.2.0/build/netcoreapp2.2/Microsoft.AspNetCore.App.props" Condition="Exists('/usr/local/share/dotnet/sdk/NuGetFallbackFolder/microsoft.aspnetcore.app/2.2.0/build/netcoreapp2.2/Microsoft.AspNetCore.App.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgNuGet_CommandLine Condition=" '$(PkgNuGet_CommandLine)' == '' ">/Users/sajidMacPro/.nuget/packages/nuget.commandline/5.2.0</PkgNuGet_CommandLine>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/sajidMacPro/.nuget/packages/microsoft.entityframeworkcore.tools/2.2.6</PkgMicrosoft_EntityFrameworkCore_Tools>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/usr/local/share/dotnet/sdk/NuGetFallbackFolder/microsoft.codeanalysis.analyzers/1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_AspNetCore_Razor_Design Condition=" '$(PkgMicrosoft_AspNetCore_Razor_Design)' == '' ">/usr/local/share/dotnet/sdk/NuGetFallbackFolder/microsoft.aspnetcore.razor.design/2.2.0</PkgMicrosoft_AspNetCore_Razor_Design>
