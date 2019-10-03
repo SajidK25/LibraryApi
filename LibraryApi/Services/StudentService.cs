@@ -72,5 +72,22 @@ namespace LibraryApi.Services
         }
 
 
+        public decimal CheckFineAmount(int? studentId)
+        {
+            return _studentRepository.CheckFine(studentId);
+        }
+
+        public void ReceiveStudentFine(Student student, decimal amount)
+        {
+            _studentRepository.ReceiveFine(student, amount);
+        }
+
+        public decimal RemainingFineBalance(decimal fineAmount, decimal paymentAmount)
+        {
+            var fineBalance = fineAmount - paymentAmount;
+            return fineBalance;
+        }
+
+
     }
 }
