@@ -10,5 +10,6 @@ namespace LibraryApi.Services
         List<Student> GetStudentList();
         bool EditStudent(Student student);
         bool RemoveStudent(Student student);
+
     }
 }

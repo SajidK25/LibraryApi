@@ -29,10 +29,22 @@ namespace LibraryApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services
                 .AddTransient<IStudentRepository, StudentRepository>()
                 .AddTransient<IStudentService, StudentService>();
+            services
+                .AddTransient<IBookRepository, BookRepository>()
+                .AddTransient<ILibraryManagementService, LibraryManagementService>();
+            services
+                .AddTransient<IBookIssueRepository, BookIssueRepository>()
+                .AddTransient<ILibraryManagementService, LibraryManagementService>();
+            services
+                .AddTransient<IReturnBookRepository, ReturnBookRepository>()
+                .AddTransient<ILibraryManagementService, LibraryManagementService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

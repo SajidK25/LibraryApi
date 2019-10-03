@@ -10,6 +10,9 @@ namespace LibraryApi
 
         }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<BookIssue> BookIssues { get; set; }
+        public DbSet<ReturnBook> ReturnBooks { get; set; }
 
     }
 }
