@@ -14,3 +14,8 @@
 /Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/appsettings.json
 /Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/Properties/launchSettings.json
 /Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.csprojAssemblyReference.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryCore.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/WebAPI.Library.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/WebAPI.Library.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/bin/Debug/netcoreapp2.2/LibraryCore.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryApi/obj/Debug/netcoreapp2.2/LibraryApi.csproj.CopyComplete

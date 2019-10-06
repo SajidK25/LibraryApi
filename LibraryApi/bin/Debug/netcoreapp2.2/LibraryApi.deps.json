@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "LibraryApi/1.0.0": {
         "dependencies": {
+          "LibraryCore": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.6",
@@ -32,7 +33,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.2.6",
           "Microsoft.NETCore.App": "2.2.0",
           "Newtonsoft.Json": "12.0.2",
-          "NuGet.CommandLine": "5.2.0"
+          "NuGet.CommandLine": "5.2.0",
+          "WebAPI.Library": "1.0.0"
         },
         "runtime": {
           "LibraryApi.dll": {}
@@ -128,8 +130,8 @@
       "Newtonsoft.Json/12.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
           }
         },
         "compile": {
@@ -268,6 +270,28 @@
             "assemblyVersion": "4.1.1.0",
             "fileVersion": "4.6.26515.6"
           }
+        }
+      },
+      "LibraryCore/1.0.0": {
+        "runtime": {
+          "LibraryCore.dll": {}
+        },
+        "compile": {
+          "LibraryCore.dll": {}
+        }
+      },
+      "WebAPI.Library/1.0.0": {
+        "dependencies": {
+          "LibraryCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.6",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6"
+        },
+        "runtime": {
+          "WebAPI.Library.dll": {}
+        },
+        "compile": {
+          "WebAPI.Library.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3459,6 +3483,16 @@
       "sha512": "sha512-S0wEUiKcLvRlkFUXca8uio1UQ5bYQzYgOmOKtCqaBQC3GR9AJjh43otcM32IGsAyvadFTaAMw9Irm6dS4Evfng==",
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
+    },
+    "LibraryCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WebAPI.Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",

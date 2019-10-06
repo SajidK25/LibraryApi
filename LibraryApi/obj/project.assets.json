@@ -4441,6 +4441,32 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "LibraryCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/LibraryCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibraryCore.dll": {}
+        }
+      },
+      "WebAPI.Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "LibraryCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.6",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6"
+        },
+        "compile": {
+          "bin/placeholder/WebAPI.Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebAPI.Library.dll": {}
+        }
       }
     }
   },
@@ -12087,10 +12113,21 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "LibraryCore/1.0.0": {
+      "type": "project",
+      "path": "../LibraryCore/LibraryCore.csproj",
+      "msbuildProject": "../LibraryCore/LibraryCore.csproj"
+    },
+    "WebAPI.Library/1.0.0": {
+      "type": "project",
+      "path": "../WebAPI.Library/WebAPI.Library.csproj",
+      "msbuildProject": "../WebAPI.Library/WebAPI.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "LibraryCore >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 2.2.6",
@@ -12099,7 +12136,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.6",
       "Microsoft.NETCore.App >= 2.2.0",
       "Newtonsoft.Json >= 12.0.2",
-      "NuGet.CommandLine >= 5.2.0"
+      "NuGet.CommandLine >= 5.2.0",
+      "WebAPI.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12129,7 +12167,14 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj": {
+              "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj"
+            },
+            "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/WebAPI.Library.csproj": {
+              "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/WebAPI.Library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

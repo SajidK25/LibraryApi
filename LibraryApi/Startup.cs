@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LibraryApi.Repositories;
-using LibraryApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Library;
+using WebAPI.Library.Repositories;
+using WebAPI.Library.Services;
 
 namespace LibraryApi
 {
@@ -28,9 +29,8 @@ namespace LibraryApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            var migrationAssemblyName = typeof(Startup).Assembly.FullName;
+            var connection = Configuration.GetConnectionString("DefaultConnection");
 
             services
                 .AddTransient<IStudentRepository, StudentRepository>()
@@ -44,6 +44,13 @@ namespace LibraryApi
             services
                 .AddTransient<IReturnBookRepository, ReturnBookRepository>()
                 .AddTransient<ILibraryManagementService, LibraryManagementService>();
+            services
+                .AddTransient<LibraryContext>(x => new LibraryContext(connection, migrationAssemblyName));
+            services
+                .AddDbContext<LibraryContext>(x => x.UseSqlServer(connection,
+                                                        m => m.MigrationsAssembly(migrationAssemblyName)));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }
 

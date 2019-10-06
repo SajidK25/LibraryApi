@@ -1,0 +1,8 @@
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/bin/Debug/netcoreapp2.2/LibraryCore.deps.json
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/bin/Debug/netcoreapp2.2/LibraryCore.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/bin/Debug/netcoreapp2.2/LibraryCore.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.csprojAssemblyReference.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.AssemblyInfoInputs.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.AssemblyInfo.cs
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.pdb
