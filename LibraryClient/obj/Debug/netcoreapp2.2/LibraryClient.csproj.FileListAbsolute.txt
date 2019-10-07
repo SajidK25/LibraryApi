@@ -7,3 +7,7 @@
 /Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/Debug/netcoreapp2.2/LibraryClient.AssemblyInfo.cs
 /Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/Debug/netcoreapp2.2/LibraryClient.dll
 /Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/Debug/netcoreapp2.2/LibraryClient.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/bin/Debug/netcoreapp2.2/LibraryCore.dll
+/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/bin/Debug/netcoreapp2.2/LibraryCore.pdb
+/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/Debug/netcoreapp2.2/LibraryClient.csprojAssemblyReference.cache
+/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/Debug/netcoreapp2.2/LibraryClient.csproj.CopyComplete
