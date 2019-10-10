@@ -22,14 +22,14 @@ namespace WebAPI.Library.Repositories
         public void InsertBookIssue(BookIssue bookIssue)
         {
             _context.BookIssues.Add(bookIssue);
-            _context.SaveChanges();
+            //_context.SaveChanges();
 
         }
 
         public void DecreaseBook(Book book)
         {
             _context.Books.Update(book);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
         public DateTime SelectIssueDate(int studentId, string barcode)

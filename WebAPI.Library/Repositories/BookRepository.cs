@@ -22,9 +22,9 @@ namespace WebAPI.Library.Repositories
             return _context.Books.OrderBy(b => b.BookId).ToList();
         }
 
-        public Book GetSingleBook(int? bookId)
+        public Book GetSingleBook(string barcode)
         {
-            return _context.Books.Where(b => b.BookId == bookId).FirstOrDefault();
+            return _context.Books.Where(b => b.Barcode == barcode).FirstOrDefault();
         }
 
         public void Insert(Book book)

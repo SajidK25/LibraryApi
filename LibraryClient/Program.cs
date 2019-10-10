@@ -46,7 +46,7 @@ namespace LibraryClient
                     }
                     else if (int.Parse(choice) == 4)
                     {
-                        //ReturnBook();
+                        ReturnBook();
                         LibraryDashboard();
                     }
                     else if (int.Parse(choice) == 5)
@@ -150,31 +150,50 @@ namespace LibraryClient
 
         }
 
-
-        public static void BookParser()
+        public static void ReturnBook()
         {
-            const string url = "https://localhost:5001/api/Library/book/GetBooks";
-            var request = WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = "application/json";
-            using (var response = request.GetResponse())
+            Console.WriteLine("Return from (student Id): _ :");
+            var studentId = int.Parse(Console.ReadLine());
+            Console.WriteLine("Return Book (Barcode): _ :");
+            var barcode = Console.ReadLine();
+            var returnDate = DateTime.Now;
+            var returnedBook = new ReturnBook
             {
-                using (var reponseStream = response.GetResponseStream())
-                {
-                    using (var reader = new StreamReader(reponseStream))
-                    {
-                        var result = reader.ReadToEnd();
-                        Console.WriteLine(result);
-                        dynamic items = JsonConvert.DeserializeObject(result);
-                        foreach (var item in items)
-                        {
-                            Console.WriteLine(item);
-                        }
-                    }
-                }
-
-            }
+                StudentId = studentId,
+                //BookId=returnedBook.BookId,
+                Barcode = barcode,
+                ReturnDate = returnDate
+            };
+            var returnBookProcess = new BookReturnProcess();
+            returnBookProcess.ReturnBook(returnedBook);
+            Console.WriteLine("=====================================================");
         }
+
+
+        //public static void BookParser()
+        //{
+        //    const string url = "https://localhost:5001/api/Library/book/GetBooks";
+        //    var request = WebRequest.Create(url);
+        //    request.Method = "GET";
+        //    request.ContentType = "application/json";
+        //    using (var response = request.GetResponse())
+        //    {
+        //        using (var reponseStream = response.GetResponseStream())
+        //        {
+        //            using (var reader = new StreamReader(reponseStream))
+        //            {
+        //                var result = reader.ReadToEnd();
+        //                Console.WriteLine(result);
+        //                dynamic items = JsonConvert.DeserializeObject(result);
+        //                foreach (var item in items)
+        //                {
+        //                    Console.WriteLine(item);
+        //                }
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 
 }

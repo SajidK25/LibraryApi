@@ -80,7 +80,8 @@ namespace WebAPI.Library.Services
 
         public void ReceiveStudentFine(Student student, decimal amount)
         {
-            _studentRepository.ReceiveFine(student, amount);
+            var remainingAmount = student.FineAmount - amount;
+            _studentRepository.ReceiveFine(student, remainingAmount);
         }
 
         public decimal RemainingFineBalance(decimal fineAmount, decimal paymentAmount)
