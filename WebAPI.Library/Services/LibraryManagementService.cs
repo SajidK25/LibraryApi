@@ -108,7 +108,9 @@ namespace WebAPI.Library.Services
             decimal finePerDay = 10;
             var totalFine = delays * finePerDay;
             student.FineAmount = totalFine;
+
             _libraryUnitOfWork.returnBookRepository.UpdateFine(student);
+
             _libraryUnitOfWork.Save();
 
         }

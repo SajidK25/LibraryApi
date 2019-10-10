@@ -7,16 +7,16 @@ namespace WebAPI.Library.Services
 {
     public class StudentService : IStudentService
     {
-        private IStudentRepository _studentRepository;
-        public StudentService(IStudentRepository studentRepository)
+        private ILibraryUnitOfWork _libraryUnitOfWork;
+        public StudentService(ILibraryUnitOfWork libraryUnitOfWork)
         {
-            _studentRepository = studentRepository;
+            _libraryUnitOfWork = libraryUnitOfWork;
         }
 
         public Student GetStudent(int? studnetId)
         {
 
-            var student = _studentRepository.GetSingleStudent(studnetId);
+            var student = _libraryUnitOfWork.studentRepository.GetSingleStudent(studnetId);
             return student;
         }
 
@@ -25,7 +25,7 @@ namespace WebAPI.Library.Services
             bool status;
             try
             {
-                _studentRepository.Insert(student);
+                _libraryUnitOfWork.studentRepository.Insert(student);
                 status = true;
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace WebAPI.Library.Services
 
         public List<Student> GetStudentList()
         {
-            var studentList = _studentRepository.GetStudents();
+            var studentList = _libraryUnitOfWork.studentRepository.GetStudents();
             return studentList;
         }
 
@@ -46,7 +46,7 @@ namespace WebAPI.Library.Services
             bool updated;
             try
             {
-                _studentRepository.UpdateStudent(student);
+                _libraryUnitOfWork.studentRepository.UpdateStudent(student);
                 updated = true;
             }
             catch (Exception)
@@ -61,7 +61,7 @@ namespace WebAPI.Library.Services
             bool isDeleted;
             try
             {
-                _studentRepository.DeleteStudent(student);
+                _libraryUnitOfWork.studentRepository.DeleteStudent(student);
                 isDeleted = true;
             }
             catch (Exception)
@@ -75,13 +75,13 @@ namespace WebAPI.Library.Services
 
         public decimal CheckFineAmount(int? studentId)
         {
-            return _studentRepository.CheckFine(studentId);
+            return _libraryUnitOfWork.studentRepository.CheckFine(studentId);
         }
 
-        public void ReceiveStudentFine(Student student, decimal amount)
+        public void ReceiveStudentFine(Student student, decimal paymentAmount)
         {
-            var remainingAmount = student.FineAmount - amount;
-            _studentRepository.ReceiveFine(student, remainingAmount);
+
+            _libraryUnitOfWork.studentRepository.ReceiveFine(student, paymentAmount);
         }
 
         public decimal RemainingFineBalance(decimal fineAmount, decimal paymentAmount)

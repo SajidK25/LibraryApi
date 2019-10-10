@@ -56,7 +56,7 @@ namespace LibraryClient
                     }
                     else if (int.Parse(choice) == 6)
                     {
-                        //ReceiveFine();
+                        ReceiveFine();
                         LibraryDashboard();
                     }
                     else
@@ -169,7 +169,24 @@ namespace LibraryClient
             Console.WriteLine("=====================================================");
         }
 
+        public static void ReceiveFine()
+        {
+            Console.WriteLine("Please Enter Student Id : ");
+            var studentId = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("Please Enter Fine payment amount : ");
+            var paymentFineAmount = decimal.Parse(Console.ReadLine());
+
+            var member = new Student
+            {
+                StudentID = studentId,
+                FineAmount = paymentFineAmount
+            };
+            var fineReceive = new FineCheckAndReceiveProcess();
+            fineReceive.ReceiveFine(member);
+            Console.WriteLine("=============================================");
+
+        }
         //public static void BookParser()
         //{
         //    const string url = "https://localhost:5001/api/Library/book/GetBooks";
