@@ -13,9 +13,30 @@ namespace LibraryClient
         {
 
         }
-        public void Checkfine()
+        public void Checkfine(int studentId)
         {
+            const string url = "https://localhost:5001/api/student/CheckFineAmount";
+            int sid = studentId;
+            var request = WebRequest.Create(url + "?StudentId=" + sid);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            using (var response = request.GetResponse())
+            {
+                using (var reponseStream = response.GetResponseStream())
+                {
+                    using (var reader = new StreamReader(reponseStream))
+                    {
+                        var result = reader.ReadToEnd();
+                        Console.WriteLine(result);
+                        dynamic items = JsonConvert.DeserializeObject(result);
+                        foreach (var item in items)
+                        {
+                            Console.WriteLine(item);
+                        }
+                    }
+                }
 
+            }
         }
 
         public void ReceiveFine(Student student)

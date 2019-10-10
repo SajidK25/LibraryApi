@@ -124,9 +124,8 @@ namespace LibraryApi.Controllers
             try
             {
                 var FineAmount = _studentService.CheckFineAmount(studentId);
-                if (FineAmount > 0)
-                    return Ok(FineAmount);
-                return NotFound(FineAmount);
+                return Ok(FineAmount);
+
             }
             catch (Exception)
             {

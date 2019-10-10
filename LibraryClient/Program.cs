@@ -51,7 +51,7 @@ namespace LibraryClient
                     }
                     else if (int.Parse(choice) == 5)
                     {
-                        //CheckFine();
+                        CheckFine();
                         LibraryDashboard();
                     }
                     else if (int.Parse(choice) == 6)
@@ -185,6 +185,15 @@ namespace LibraryClient
             var fineReceive = new FineCheckAndReceiveProcess();
             fineReceive.ReceiveFine(member);
             Console.WriteLine("=============================================");
+
+        }
+        public static void CheckFine()
+        {
+            Console.WriteLine("Total fine  of (student Id): _ :");
+
+            var studentId = int.Parse(Console.ReadLine());
+            var fc = new FineCheckAndReceiveProcess();
+            fc.Checkfine(studentId);
 
         }
         //public static void BookParser()
