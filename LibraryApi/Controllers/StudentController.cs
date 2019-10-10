@@ -124,9 +124,8 @@ namespace LibraryApi.Controllers
             try
             {
                 var FineAmount = _studentService.CheckFineAmount(studentId);
-                if (FineAmount > 0)
-                    return Ok(FineAmount);
-                return NotFound(FineAmount);
+                return Ok(FineAmount);
+
             }
             catch (Exception)
             {
@@ -136,21 +135,23 @@ namespace LibraryApi.Controllers
 
         // PUT /api/student/ReceiveStudentFine
         [HttpPut("/api/student/ReceiveStudentFine")]
-        public ActionResult FineUpdate(int studentId, decimal paymentAmount, [FromBody] Student student)
+        public ActionResult FineUpdate([FromBody] Student student)
         {
             try
             {
-                var fineAmount = _studentService.CheckFineAmount(studentId);
-                var RemainingFineBalance = _studentService.RemainingFineBalance(fineAmount, paymentAmount);
 
-                if (paymentAmount > RemainingFineBalance)
+                var member = _studentService.GetStudent(student.StudentID);
+                var fineAmount = member.FineAmount;
+                var RemainingFineBalance = _studentService.RemainingFineBalance(fineAmount, student.FineAmount);
+
+                if (member.FineAmount < student.FineAmount)
                 {
-                    return NotFound("Sorry!! Your Payment is greater then Balance.");
+                    return Ok("Sorry!! Your Payment is greater then Balance.");
                 }
                 else
                 {
-                    _studentService.ReceiveStudentFine(student, RemainingFineBalance);
-                    return Ok();
+                    _studentService.ReceiveStudentFine(member, RemainingFineBalance);
+                    return Ok(member.FineAmount);
                 }
             }
             catch (Exception)

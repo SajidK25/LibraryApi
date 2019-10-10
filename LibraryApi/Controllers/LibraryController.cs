@@ -78,16 +78,9 @@ namespace LibraryApi.Controllers
         {
             try
             {
-                var isBookIssued = _managementService.IssueBookToMember(bookIssue);
-                var book = _managementService.GetBook(bookIssue.BookId);
-                if (book.CopyCount > 0)
-                {
-                    _managementService.DecreaseBookCopy(book);
-                }
+                _managementService.IssueBookToMember(bookIssue);
+                return Ok("Book Issued Succesfully");
 
-                if (isBookIssued)
-                    return Ok("Book Issued Succesfully");
-                return NotFound("Oops");
             }
             catch (Exception)
             {
@@ -96,23 +89,15 @@ namespace LibraryApi.Controllers
         }
 
         // POST api/Library/ReturnBookFromMember
-        [HttpPost("/api/Library/ReturnBookFromMember")]
+        [HttpPut("/api/Library/ReturnBookFromMember")]
         public ActionResult ReturnBook([FromBody]ReturnBook returnBook)
         {
             try
             {
-                var isbookReturned = _managementService.ReturnBookFromMember(returnBook);
-                var book = _managementService.GetBook(returnBook.BookId);
-                var student = _managementService.GetStudent(returnBook.StudentId);
-                var bookIssueDate = _managementService.GetIssueDate(returnBook.StudentId, book.Barcode);
-                var delays = _managementService.DaysDelay(bookIssueDate, returnBook.ReturnDate);
-                var totalfine = _managementService.CalculateFine(delays);
-                student.FineAmount = totalfine;
-                _managementService.UpdateStudentFine(student);
-                _managementService.IncreaseBookCopy(book);
-                if (isbookReturned)
-                    return Ok("Book returned Succesfully");
-                return NotFound("Oops");
+                _managementService.SaveReturnBook(returnBook);
+
+                return Ok("Book returned Succesfully");
+
             }
             catch (Exception)
             {

@@ -7,24 +7,22 @@ namespace WebAPI.Library.Services
 {
     public class LibraryManagementService : ILibraryManagementService
     {
-        private IBookRepository _bookRepository;
-        private IBookIssueRepository _bookIssueRepository;
-        private IReturnBookRepository _returnBookRepository;
-        private IStudentRepository _studentRepository;
+        //private IBookRepository _bookRepository;
+        //private IBookIssueRepository _bookIssueRepository;
+        //private IReturnBookRepository _returnBookRepository;
+        //private IStudentRepository _studentRepository;
+        private ILibraryUnitOfWork _libraryUnitOfWork;
 
-        public LibraryManagementService(IBookRepository bookRepository, IBookIssueRepository bookIssueRepository, IReturnBookRepository returnBookRepository, IStudentRepository studentRepository)
+        public LibraryManagementService(ILibraryUnitOfWork libraryUnitOfWork)
         {
-            _bookRepository = bookRepository;
-            _bookIssueRepository = bookIssueRepository;
-            _returnBookRepository = returnBookRepository;
-            _studentRepository = studentRepository;
+            _libraryUnitOfWork = libraryUnitOfWork;
         }
 
 
 
         public List<Book> GetBooks()
         {
-            return _bookRepository.GetAllBooks();
+            return _libraryUnitOfWork.bookRepository.GetAllBooks();
         }
 
         public bool SaveBook(Book book)
@@ -32,7 +30,7 @@ namespace WebAPI.Library.Services
             bool isSaved;
             try
             {
-                _bookRepository.Insert(book);
+                _libraryUnitOfWork.bookRepository.Insert(book);
                 isSaved = true;
             }
             catch (Exception ex)
@@ -49,9 +47,9 @@ namespace WebAPI.Library.Services
             throw new NotImplementedException();
         }
 
-        public Book GetBook(int? bookId)
+        public Book GetBook(string barcode)
         {
-            var book = _bookRepository.GetSingleBook(bookId);
+            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(barcode);
             return book;
         }
         public void RemoveBook(Book book)
@@ -59,45 +57,71 @@ namespace WebAPI.Library.Services
             throw new NotImplementedException();
         }
 
-        public bool IssueBookToMember(BookIssue bookIssue)
+        public void IssueBookToMember(BookIssue bookIssue)
         {
-            bool isIssued;
-            try
+            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(bookIssue.Barcode);
+            //var student = GetStudent(bookIssue.StudentId);
+            if (book.CopyCount > 0)
             {
-                _bookIssueRepository.InsertBookIssue(bookIssue);
-                isIssued = true;
+                _libraryUnitOfWork.bookIssueRepository.InsertBookIssue(bookIssue);
+                book.CopyCount -= 1;
+                _libraryUnitOfWork.bookIssueRepository.DecreaseBook(book);
+                _libraryUnitOfWork.Save();
             }
-            catch (Exception ex)
-            {
-                isIssued = false;
-            }
-            return isIssued;
+
+
         }
 
-        public void DecreaseBookCopy(Book book)
-        {
-            book.CopyCount -= 1;
-            _bookIssueRepository.DecreaseBook(book);
-        }
+        //public void DecreaseBookCopy(Book book)
+        //{
+        //    book.CopyCount -= 1;
+        //    _libraryUnitOfWork.bookIssueRepository.DecreaseBook(book);
+        //}
 
 
         public BookIssue GetAIssuedBook(int studentId, string barcode)
         {
-            return _bookIssueRepository.SingleBookFromIssuedBooks(studentId, barcode);
+            return _libraryUnitOfWork.bookIssueRepository.SingleBookFromIssuedBooks(studentId, barcode);
         }
 
         public Student GetStudent(int? studentId)
         {
-            return _studentRepository.GetSingleStudent(studentId);
+            return _libraryUnitOfWork.studentRepository.GetSingleStudent(studentId);
         }
 
+        public void SaveReturnBook(ReturnBook returnBook)
+        {
+            _libraryUnitOfWork.returnBookRepository.InsertReturnBook(returnBook);
+            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(returnBook.Barcode);
 
+            book.CopyCount += 1;
+            _libraryUnitOfWork.returnBookRepository.IncreaseBook(book);
+
+            var bookIssueDate = _libraryUnitOfWork.bookIssueRepository.SelectIssueDate(returnBook.StudentId, book.Barcode);
+            var student = _libraryUnitOfWork.studentRepository.GetSingleStudent(returnBook.StudentId);
+            var gracePeriod = 7;
+            var totalDays = ((returnBook.ReturnDate - bookIssueDate).Days) - 1;
+            var delays = (totalDays - gracePeriod);
+            if (delays < 0)
+                delays = 0;
+
+            decimal finePerDay = 10;
+            var totalFine = delays * finePerDay;
+            student.FineAmount = totalFine;
+
+            _libraryUnitOfWork.returnBookRepository.UpdateFine(student);
+
+            _libraryUnitOfWork.Save();
+
+        }
+
+        /*
         public bool ReturnBookFromMember(ReturnBook returnBook)
         {
             bool isReturn;
             try
             {
-                _returnBookRepository.InsertReturnBook(returnBook);
+                _libraryUnitOfWork.returnBookRepository.InsertReturnBook(returnBook);
                 isReturn = true;
             }
             catch (Exception ex)
@@ -110,7 +134,7 @@ namespace WebAPI.Library.Services
         public void IncreaseBookCopy(Book book)
         {
             book.CopyCount += 1;
-            _returnBookRepository.IncreaseBook(book);
+            _libraryUnitOfWork.returnBookRepository.IncreaseBook(book);
         }
 
         public int DaysDelay(DateTime issueDate, DateTime returnDate)
@@ -134,12 +158,13 @@ namespace WebAPI.Library.Services
 
         public void UpdateStudentFine(Student student)
         {
-            _returnBookRepository.UpdateFine(student);
+            _libraryUnitOfWork.returnBookRepository.UpdateFine(student);
         }
 
         public DateTime GetIssueDate(int studentId, string barcode)
         {
-            return _bookIssueRepository.SelectIssueDate(studentId, barcode);
+            return _libraryUnitOfWork.bookIssueRepository.SelectIssueDate(studentId, barcode);
         }
+         */
     }
 }

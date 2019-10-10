@@ -46,17 +46,17 @@ namespace LibraryClient
                     }
                     else if (int.Parse(choice) == 4)
                     {
-                        //ReturnBook();
+                        ReturnBook();
                         LibraryDashboard();
                     }
                     else if (int.Parse(choice) == 5)
                     {
-                        //CheckFine();
+                        CheckFine();
                         LibraryDashboard();
                     }
                     else if (int.Parse(choice) == 6)
                     {
-                        //ReceiveFine();
+                        ReceiveFine();
                         LibraryDashboard();
                     }
                     else
@@ -150,31 +150,76 @@ namespace LibraryClient
 
         }
 
-
-        public static void BookParser()
+        public static void ReturnBook()
         {
-            const string url = "https://localhost:5001/api/Library/book/GetBooks";
-            var request = WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = "application/json";
-            using (var response = request.GetResponse())
+            Console.WriteLine("Return from (student Id): _ :");
+            var studentId = int.Parse(Console.ReadLine());
+            Console.WriteLine("Return Book (Barcode): _ :");
+            var barcode = Console.ReadLine();
+            var returnDate = DateTime.Now;
+            var returnedBook = new ReturnBook
             {
-                using (var reponseStream = response.GetResponseStream())
-                {
-                    using (var reader = new StreamReader(reponseStream))
-                    {
-                        var result = reader.ReadToEnd();
-                        Console.WriteLine(result);
-                        dynamic items = JsonConvert.DeserializeObject(result);
-                        foreach (var item in items)
-                        {
-                            Console.WriteLine(item);
-                        }
-                    }
-                }
-
-            }
+                StudentId = studentId,
+                //BookId=returnedBook.BookId,
+                Barcode = barcode,
+                ReturnDate = returnDate
+            };
+            var returnBookProcess = new BookReturnProcess();
+            returnBookProcess.ReturnBook(returnedBook);
+            Console.WriteLine("=====================================================");
         }
+
+        public static void ReceiveFine()
+        {
+            Console.WriteLine("Please Enter Student Id : ");
+            var studentId = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please Enter Fine payment amount : ");
+            var paymentFineAmount = decimal.Parse(Console.ReadLine());
+
+            var member = new Student
+            {
+                StudentID = studentId,
+                FineAmount = paymentFineAmount
+            };
+            var fineReceive = new FineCheckAndReceiveProcess();
+            fineReceive.ReceiveFine(member);
+            Console.WriteLine("=============================================");
+
+        }
+        public static void CheckFine()
+        {
+            Console.WriteLine("Total fine  of (student Id): _ :");
+
+            var studentId = int.Parse(Console.ReadLine());
+            var fc = new FineCheckAndReceiveProcess();
+            fc.Checkfine(studentId);
+
+        }
+        //public static void BookParser()
+        //{
+        //    const string url = "https://localhost:5001/api/Library/book/GetBooks";
+        //    var request = WebRequest.Create(url);
+        //    request.Method = "GET";
+        //    request.ContentType = "application/json";
+        //    using (var response = request.GetResponse())
+        //    {
+        //        using (var reponseStream = response.GetResponseStream())
+        //        {
+        //            using (var reader = new StreamReader(reponseStream))
+        //            {
+        //                var result = reader.ReadToEnd();
+        //                Console.WriteLine(result);
+        //                dynamic items = JsonConvert.DeserializeObject(result);
+        //                foreach (var item in items)
+        //                {
+        //                    Console.WriteLine(item);
+        //                }
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 
 }

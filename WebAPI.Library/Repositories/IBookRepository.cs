@@ -8,7 +8,7 @@ namespace WebAPI.Library.Repositories
     {
         void Insert(Book book);
         List<Book> GetAllBooks();
-        Book GetSingleBook(int? bookId);
+        Book GetSingleBook(string barcode);
         void UpdateBook(Book book);
         void DeleteBook(Book book);
     }

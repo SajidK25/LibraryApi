@@ -13,19 +13,19 @@ namespace WebAPI.Library.Repositories
         public void IncreaseBook(Book book)
         {
             _context.Books.Update(book);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
         public void InsertReturnBook(ReturnBook returnBook)
         {
             _context.ReturnBooks.Add(returnBook);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
         public void UpdateFine(Student student)
         {
             _context.Students.Update(student);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
     }
 }

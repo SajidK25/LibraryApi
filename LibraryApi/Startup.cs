@@ -34,18 +34,15 @@ namespace LibraryApi
 
             services
                 .AddTransient<IStudentRepository, StudentRepository>()
-                .AddTransient<IStudentService, StudentService>();
-            services
+                .AddTransient<IStudentService, StudentService>()
+
                 .AddTransient<IBookRepository, BookRepository>()
-                .AddTransient<ILibraryManagementService, LibraryManagementService>();
-            services
                 .AddTransient<IBookIssueRepository, BookIssueRepository>()
-                .AddTransient<ILibraryManagementService, LibraryManagementService>();
-            services
                 .AddTransient<IReturnBookRepository, ReturnBookRepository>()
-                .AddTransient<ILibraryManagementService, LibraryManagementService>();
-            services
+                .AddTransient<ILibraryManagementService, LibraryManagementService>()
+                .AddTransient<ILibraryUnitOfWork, LibraryUnitOfWork>(x => new LibraryUnitOfWork(connection, migrationAssemblyName))
                 .AddTransient<LibraryContext>(x => new LibraryContext(connection, migrationAssemblyName));
+
             services
                 .AddDbContext<LibraryContext>(x => x.UseSqlServer(connection,
                                                         m => m.MigrationsAssembly(migrationAssemblyName)));
