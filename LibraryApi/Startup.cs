@@ -35,7 +35,6 @@ namespace LibraryApi
             services
                 .AddTransient<IStudentRepository, StudentRepository>()
                 .AddTransient<IStudentService, StudentService>()
-
                 .AddTransient<IBookRepository, BookRepository>()
                 .AddTransient<IBookIssueRepository, BookIssueRepository>()
                 .AddTransient<IReturnBookRepository, ReturnBookRepository>()
