@@ -32,13 +32,13 @@ namespace WebAPI.Library.Repositories
         public void UpdateStudent(Student student)
         {
             _context.Students.Update(student);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
         public void DeleteStudent(Student student)
         {
             _context.Students.Remove(student);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
 
         public decimal CheckFine(int? studentId)
@@ -49,11 +49,11 @@ namespace WebAPI.Library.Repositories
                     .FirstOrDefault();
         }
 
-        public void ReceiveFine(Student student, decimal paymentAmount)
+        public void ReceiveFine(Student student, decimal remainingFinebalance)
         {
-            student.FineAmount = paymentAmount;
+            student.FineAmount = remainingFinebalance;
             _context.Students.Update(student);
-            _context.SaveChanges();
+            //_context.SaveChanges();
         }
     }
 }

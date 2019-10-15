@@ -16,7 +16,8 @@ namespace WebAPI.Library.Services
         public Student GetStudent(int? studnetId)
         {
 
-            var student = _libraryUnitOfWork.studentRepository.GetSingleStudent(studnetId);
+            var student = _libraryUnitOfWork.StudentRepository.GetSingleStudent(studnetId);
+            //var student = new Student();
             return student;
         }
 
@@ -25,7 +26,7 @@ namespace WebAPI.Library.Services
             bool status;
             try
             {
-                _libraryUnitOfWork.studentRepository.Insert(student);
+                _libraryUnitOfWork.StudentRepository.Insert(student);
                 status = true;
             }
             catch (Exception)
@@ -37,7 +38,7 @@ namespace WebAPI.Library.Services
 
         public List<Student> GetStudentList()
         {
-            var studentList = _libraryUnitOfWork.studentRepository.GetStudents();
+            var studentList = _libraryUnitOfWork.StudentRepository.GetStudents();
             return studentList;
         }
 
@@ -46,7 +47,9 @@ namespace WebAPI.Library.Services
             bool updated;
             try
             {
-                _libraryUnitOfWork.studentRepository.UpdateStudent(student);
+                //student = null;
+                _libraryUnitOfWork.StudentRepository.UpdateStudent(student);
+                _libraryUnitOfWork.Save();
                 updated = true;
             }
             catch (Exception)
@@ -61,7 +64,8 @@ namespace WebAPI.Library.Services
             bool isDeleted;
             try
             {
-                _libraryUnitOfWork.studentRepository.DeleteStudent(student);
+                _libraryUnitOfWork.StudentRepository.DeleteStudent(student);
+                _libraryUnitOfWork.Save();
                 isDeleted = true;
             }
             catch (Exception)
@@ -75,20 +79,25 @@ namespace WebAPI.Library.Services
 
         public decimal CheckFineAmount(int? studentId)
         {
-            return _libraryUnitOfWork.studentRepository.CheckFine(studentId);
+            //studentId=null;
+            return _libraryUnitOfWork.StudentRepository.CheckFine(studentId);
         }
 
         public void ReceiveStudentFine(Student student, decimal paymentAmount)
         {
-
-            _libraryUnitOfWork.studentRepository.ReceiveFine(student, paymentAmount);
+            var fineBalance = student.FineAmount - paymentAmount;
+            if (paymentAmount > student.FineAmount)
+            {
+                throw new InvalidOperationException("Sorry!! Your Payment is greater then Balance.");
+            }
+            else
+            {
+                _libraryUnitOfWork.StudentRepository.ReceiveFine(student, fineBalance);
+                _libraryUnitOfWork.Save();
+            }
         }
 
-        public decimal RemainingFineBalance(decimal fineAmount, decimal paymentAmount)
-        {
-            var fineBalance = fineAmount - paymentAmount;
-            return fineBalance;
-        }
+
 
 
     }

@@ -22,7 +22,7 @@ namespace WebAPI.Library.Services
 
         public List<Book> GetBooks()
         {
-            return _libraryUnitOfWork.bookRepository.GetAllBooks();
+            return _libraryUnitOfWork.BookRepository.GetAllBooks();
         }
 
         public bool SaveBook(Book book)
@@ -30,7 +30,7 @@ namespace WebAPI.Library.Services
             bool isSaved;
             try
             {
-                _libraryUnitOfWork.bookRepository.Insert(book);
+                _libraryUnitOfWork.BookRepository.Insert(book);
                 isSaved = true;
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace WebAPI.Library.Services
 
         public Book GetBook(string barcode)
         {
-            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(barcode);
+            var book = _libraryUnitOfWork.BookRepository.GetSingleBook(barcode);
             return book;
         }
         public void RemoveBook(Book book)
@@ -59,14 +59,18 @@ namespace WebAPI.Library.Services
 
         public void IssueBookToMember(BookIssue bookIssue)
         {
-            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(bookIssue.Barcode);
+            var book = _libraryUnitOfWork.BookRepository.GetSingleBook(bookIssue.Barcode);
             //var student = GetStudent(bookIssue.StudentId);
             if (book.CopyCount > 0)
             {
-                _libraryUnitOfWork.bookIssueRepository.InsertBookIssue(bookIssue);
+                _libraryUnitOfWork.BookIssueRepository.InsertBookIssue(bookIssue);
                 book.CopyCount -= 1;
-                _libraryUnitOfWork.bookIssueRepository.DecreaseBook(book);
+                _libraryUnitOfWork.BookIssueRepository.DecreaseBook(book);
                 _libraryUnitOfWork.Save();
+            }
+            else
+            {
+                throw new InvalidOperationException("Not enough copy");
             }
 
 
@@ -81,24 +85,27 @@ namespace WebAPI.Library.Services
 
         public BookIssue GetAIssuedBook(int studentId, string barcode)
         {
-            return _libraryUnitOfWork.bookIssueRepository.SingleBookFromIssuedBooks(studentId, barcode);
+            return _libraryUnitOfWork.BookIssueRepository.SingleBookFromIssuedBooks(studentId, barcode);
         }
 
         public Student GetStudent(int? studentId)
         {
-            return _libraryUnitOfWork.studentRepository.GetSingleStudent(studentId);
+            return _libraryUnitOfWork.StudentRepository.GetSingleStudent(studentId);
         }
 
         public void SaveReturnBook(ReturnBook returnBook)
         {
-            _libraryUnitOfWork.returnBookRepository.InsertReturnBook(returnBook);
-            var book = _libraryUnitOfWork.bookRepository.GetSingleBook(returnBook.Barcode);
+            _libraryUnitOfWork.ReturnBookRepository.InsertReturnBook(returnBook);
+
+            var book = _libraryUnitOfWork.BookRepository.GetSingleBook(returnBook.Barcode);
 
             book.CopyCount += 1;
-            _libraryUnitOfWork.returnBookRepository.IncreaseBook(book);
+            _libraryUnitOfWork.ReturnBookRepository.IncreaseBook(book);
 
-            var bookIssueDate = _libraryUnitOfWork.bookIssueRepository.SelectIssueDate(returnBook.StudentId, book.Barcode);
-            var student = _libraryUnitOfWork.studentRepository.GetSingleStudent(returnBook.StudentId);
+            var bookIssueDate = _libraryUnitOfWork.BookIssueRepository.SelectIssueDate(returnBook.StudentId, book.Barcode);
+
+            var student = _libraryUnitOfWork.StudentRepository.GetSingleStudent(returnBook.StudentId);
+
             var gracePeriod = 7;
             var totalDays = ((returnBook.ReturnDate - bookIssueDate).Days) - 1;
             var delays = (totalDays - gracePeriod);
@@ -109,8 +116,7 @@ namespace WebAPI.Library.Services
             var totalFine = delays * finePerDay;
             student.FineAmount = totalFine;
 
-            _libraryUnitOfWork.returnBookRepository.UpdateFine(student);
-
+            _libraryUnitOfWork.ReturnBookRepository.UpdateFine(student);
             _libraryUnitOfWork.Save();
 
         }

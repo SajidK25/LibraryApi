@@ -3,10 +3,10 @@ namespace WebAPI.Library.Repositories
 {
     public interface ILibraryUnitOfWork
     {
-        IStudentRepository studentRepository { get; }
-        IBookIssueRepository bookIssueRepository { get; }
-        IBookRepository bookRepository { get; }
-        IReturnBookRepository returnBookRepository { get; }
+        IStudentRepository StudentRepository { get; }
+        IBookIssueRepository BookIssueRepository { get; }
+        IBookRepository BookRepository { get; }
+        IReturnBookRepository ReturnBookRepository { get; }
         void Save();
     }
 }

@@ -12,7 +12,7 @@ namespace WebAPI.Library.Repositories
         void UpdateStudent(Student student);
         void DeleteStudent(Student student);
         decimal CheckFine(int? studentId);
-        void ReceiveFine(Student student, decimal paymentAmount);
+        void ReceiveFine(Student student, decimal remainingFinebalance);
 
     }
 }

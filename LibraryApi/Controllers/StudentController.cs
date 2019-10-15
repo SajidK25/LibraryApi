@@ -135,24 +135,14 @@ namespace LibraryApi.Controllers
 
         // PUT /api/student/ReceiveStudentFine
         [HttpPut("/api/student/ReceiveStudentFine")]
-        public ActionResult FineUpdate([FromBody] Student student)
+        public ActionResult FineUpdate([FromBody] Student student, decimal payment)
         {
             try
             {
 
-                var member = _studentService.GetStudent(student.StudentID);
-                var fineAmount = member.FineAmount;
-                var RemainingFineBalance = _studentService.RemainingFineBalance(fineAmount, student.FineAmount);
+                _studentService.ReceiveStudentFine(student, payment);
+                return Ok(student.FineAmount);
 
-                if (member.FineAmount < student.FineAmount)
-                {
-                    return Ok("Sorry!! Your Payment is greater then Balance.");
-                }
-                else
-                {
-                    _studentService.ReceiveStudentFine(member, RemainingFineBalance);
-                    return Ok(member.FineAmount);
-                }
             }
             catch (Exception)
             {

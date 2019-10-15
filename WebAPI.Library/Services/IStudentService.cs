@@ -12,7 +12,6 @@ namespace WebAPI.Library.Services
         bool EditStudent(Student student);
         bool RemoveStudent(Student student);
         decimal CheckFineAmount(int? studentId);
-        decimal RemainingFineBalance(decimal fineAmount, decimal paymentAmount);
         void ReceiveStudentFine(Student student, decimal amount);
 
     }
