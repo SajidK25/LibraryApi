@@ -195,7 +195,8 @@ namespace WebAPI.Library.Test
 
 
             // Assert
-            Assert.IsTrue(result);
+            result.ShouldBeTrue();
+            //Assert.IsTrue(result);
             fakeStudentRepository.VerifyAll();
             libraryUnitOfWork.VerifyAll();
         }
@@ -223,7 +224,8 @@ namespace WebAPI.Library.Test
             var result = _studentService.CheckFineAmount(studentId);
 
             // Assert
-            Assert.AreEqual(240.00M, result);
+            result.ShouldBe(240.00M);
+            //Assert.AreEqual(240.00M, result);
             fakeStudentRepository.VerifyAll();
             libraryUnitOfWork.VerifyAll();
         }
