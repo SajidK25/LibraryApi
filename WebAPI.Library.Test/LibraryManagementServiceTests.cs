@@ -15,23 +15,23 @@ namespace WebAPI.Library.Test
     [TestFixture, ExcludeFromCodeCoverage]
     public class LibraryManagementServiceTests
     {
-        private readonly ContainerBuilder _builder;
-        private IContainer _container;
+        //private readonly ContainerBuilder _builder;
+        //private IContainer _container;
         private ILibraryManagementService _libraryManagementService;
         private AutoMock _mock;
 
         public LibraryManagementServiceTests()
         {
-            const string connection = "";
-            const string migrationAssemblyName = "";
+            //const string connection = "";
+            //const string migrationAssemblyName = "";
 
-            _builder = new ContainerBuilder();
+            //_builder = new ContainerBuilder();
             //_builder.RegisterType<StudentRepository>().As<IStudentRepository>();
             //_builder.RegisterType<BookRepository>().As<IBookRepository>();
             //_builder.RegisterType<BookIssueRepository>().As<IBookIssueRepository>();
             //_builder.RegisterType<ReturnBookRepository>().As<IReturnBookRepository>();
-            _builder.RegisterType<LibraryManagementService>().As<ILibraryManagementService>()
-                .WithParameter(new TypedParameter(typeof(ILibraryUnitOfWork), new Mock<ILibraryUnitOfWork>().Object));
+            //_builder.RegisterType<LibraryManagementService>().As<ILibraryManagementService>()
+            //    .WithParameter(new TypedParameter(typeof(ILibraryUnitOfWork), new Mock<ILibraryUnitOfWork>().Object));
 
 
 
@@ -48,7 +48,7 @@ namespace WebAPI.Library.Test
             //        new TypedParameter(typeof(string),migrationAssemblyName)
             //    });
 
-            _container = _builder.Build();
+            //_container = _builder.Build();
 
         }
         [OneTimeSetUp]
@@ -155,7 +155,7 @@ namespace WebAPI.Library.Test
         public void GetBook_WhenCallWithBarcodeParameter_ReturnABookObject()
         {
             // Arrange
-            var barcode = "IT00001";
+            const string barcode = "IT00001";
             var aBook = new Book
             {
                 BookId = 1,

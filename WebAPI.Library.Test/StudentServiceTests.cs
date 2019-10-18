@@ -16,23 +16,23 @@ namespace WebAPI.Library.Test
     [TestFixture, ExcludeFromCodeCoverage]
     public class StudentServiceTests
     {
-        private readonly ContainerBuilder _builder;
-        private IContainer _container;
+        //private readonly ContainerBuilder _builder;
+        //private IContainer _container;
         private IStudentService _studentService;
         private AutoMock _mock;
 
         public StudentServiceTests()
         {
-            const string connection = "";
-            const string migrationAssemblyName = "";
+            //const string connection = "";
+            //const string migrationAssemblyName = "";
 
-            _builder = new ContainerBuilder();
-            //_builder.RegisterType<StudentRepository>().As<IStudentRepository>();
-            //_builder.RegisterType<BookRepository>().As<IBookRepository>();
-            //_builder.RegisterType<BookIssueRepository>().As<IBookIssueRepository>();
-            //_builder.RegisterType<ReturnBookRepository>().As<IReturnBookRepository>();
-            _builder.RegisterType<StudentService>().As<IStudentService>()
-                .WithParameter(new TypedParameter(typeof(ILibraryUnitOfWork), new Mock<ILibraryUnitOfWork>().Object));
+            //_builder = new ContainerBuilder();
+            ////_builder.RegisterType<StudentRepository>().As<IStudentRepository>();
+            ////_builder.RegisterType<BookRepository>().As<IBookRepository>();
+            ////_builder.RegisterType<BookIssueRepository>().As<IBookIssueRepository>();
+            ////_builder.RegisterType<ReturnBookRepository>().As<IReturnBookRepository>();
+            //_builder.RegisterType<StudentService>().As<IStudentService>()
+            //    .WithParameter(new TypedParameter(typeof(ILibraryUnitOfWork), new Mock<ILibraryUnitOfWork>().Object));
 
 
 
@@ -49,7 +49,7 @@ namespace WebAPI.Library.Test
             //        new TypedParameter(typeof(string),migrationAssemblyName)
             //    });
 
-            _container = _builder.Build();
+            //_container = _builder.Build();
 
         }
         [OneTimeSetUp]
@@ -93,6 +93,7 @@ namespace WebAPI.Library.Test
             var libraryUnitOfWork = _mock.Mock<ILibraryUnitOfWork>();
 
             fakeStudentRepository.Setup(x => x.GetSingleStudent(studentId)).Returns(aStudent);
+
             libraryUnitOfWork.Setup(x => x.StudentRepository).Returns(fakeStudentRepository.Object);
 
             _studentService = _mock.Create<StudentService>(new TypedParameter(typeof(ILibraryUnitOfWork), libraryUnitOfWork.Object));
@@ -202,7 +203,7 @@ namespace WebAPI.Library.Test
         public void CheckFineAmount_WhenCallWithParatemerStudentID_ReturnADecimalValue()
         {
             // Arrange
-            var studentId = 1001;
+            const int studentId = 1001;
             var aStudent = new Student
             {
                 StudentID = 1001,
@@ -232,7 +233,7 @@ namespace WebAPI.Library.Test
         {
             // Arrange
             //var studentId = 1001;
-            var paymentAmount = 300;
+            const decimal paymentAmount = 300;
             var aStudent = new Student
             {
                 StudentID = 1001,
@@ -254,7 +255,7 @@ namespace WebAPI.Library.Test
         {
             // Arrange
             //var studentId = 1001;
-            var paymentAmount = 200;
+            const decimal paymentAmount = 200;
             var aStudent = new Student
             {
                 StudentID = 1001,
