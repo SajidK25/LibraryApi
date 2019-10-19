@@ -6,3 +6,11 @@
 /Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.AssemblyInfo.cs
 /Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.dll
 /Users/sajidMacPro/Projects/LibraryApi/LibraryCore/obj/Debug/netcoreapp2.2/LibraryCore.pdb
+C:\Work\LibraryApi\LibraryCore\bin\Debug\netcoreapp2.2\LibraryCore.deps.json
+C:\Work\LibraryApi\LibraryCore\bin\Debug\netcoreapp2.2\LibraryCore.dll
+C:\Work\LibraryApi\LibraryCore\bin\Debug\netcoreapp2.2\LibraryCore.pdb
+C:\Work\LibraryApi\LibraryCore\obj\Debug\netcoreapp2.2\LibraryCore.csprojAssemblyReference.cache
+C:\Work\LibraryApi\LibraryCore\obj\Debug\netcoreapp2.2\LibraryCore.AssemblyInfoInputs.cache
+C:\Work\LibraryApi\LibraryCore\obj\Debug\netcoreapp2.2\LibraryCore.AssemblyInfo.cs
+C:\Work\LibraryApi\LibraryCore\obj\Debug\netcoreapp2.2\LibraryCore.dll
+C:\Work\LibraryApi\LibraryCore\obj\Debug\netcoreapp2.2\LibraryCore.pdb

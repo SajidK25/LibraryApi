@@ -3775,7 +3775,7 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
+      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
@@ -4106,7 +4106,7 @@
       ]
     },
     "System.ComponentModel.TypeConverter/4.3.0": {
-      "sha512": "HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
       "type": "package",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
@@ -6818,7 +6818,7 @@
       ]
     },
     "System.Threading.ThreadPool/4.3.0": {
-      "sha512": "SrCOmTvvOOCmJT4BBxdZcwhz6XEMsjBGZvGSVorOxdCznaUNeVotEjDfXGIZ8gcGo00qgPbTV6puHDgcFYl6Iw==",
+      "sha512": "k/+g4b7vjdd4aix83sTgC9VG6oXYKAktSfNIJUNGxPEj7ryEOfzHHhfnmsZvjxawwcD9HyWXKCXmPjX8U4zeSw==",
       "type": "package",
       "path": "system.threading.threadpool/4.3.0",
       "files": [
@@ -7206,38 +7206,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/sajidMacPro/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Jalal Uddin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library.Test/WebAPI.Library.Test.csproj",
+      "projectUniqueName": "C:\\Work\\LibraryApi\\WebAPI.Library.Test\\WebAPI.Library.Test.csproj",
       "projectName": "WebAPI.Library.Test",
-      "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library.Test/WebAPI.Library.Test.csproj",
-      "packagesPath": "/Users/sajidMacPro/.nuget/packages/",
-      "outputPath": "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library.Test/obj/",
+      "projectPath": "C:\\Work\\LibraryApi\\WebAPI.Library.Test\\WebAPI.Library.Test.csproj",
+      "packagesPath": "C:\\Users\\Jalal Uddin\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\LibraryApi\\WebAPI.Library.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/sajidMacPro/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Jalal Uddin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj": {
-              "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj"
+            "C:\\Work\\LibraryApi\\LibraryCore\\LibraryCore.csproj": {
+              "projectPath": "C:\\Work\\LibraryApi\\LibraryCore\\LibraryCore.csproj"
             },
-            "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/WebAPI.Library.csproj": {
-              "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/WebAPI.Library.csproj"
+            "C:\\Work\\LibraryApi\\WebAPI.Library\\WebAPI.Library.csproj": {
+              "projectPath": "C:\\Work\\LibraryApi\\WebAPI.Library\\WebAPI.Library.csproj"
             }
           }
         }
@@ -7296,7 +7298,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

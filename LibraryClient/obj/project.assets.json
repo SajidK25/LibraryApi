@@ -742,35 +742,37 @@
     ]
   },
   "packageFolders": {
-    "/Users/sajidMacPro/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Jalal Uddin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/LibraryClient.csproj",
+      "projectUniqueName": "C:\\Work\\LibraryApi\\LibraryClient\\LibraryClient.csproj",
       "projectName": "LibraryClient",
-      "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/LibraryClient.csproj",
-      "packagesPath": "/Users/sajidMacPro/.nuget/packages/",
-      "outputPath": "/Users/sajidMacPro/Projects/LibraryApi/LibraryClient/obj/",
+      "projectPath": "C:\\Work\\LibraryApi\\LibraryClient\\LibraryClient.csproj",
+      "packagesPath": "C:\\Users\\Jalal Uddin\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\LibraryApi\\LibraryClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/sajidMacPro/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Jalal Uddin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj": {
-              "projectPath": "/Users/sajidMacPro/Projects/LibraryApi/LibraryCore/LibraryCore.csproj"
+            "C:\\Work\\LibraryApi\\LibraryCore\\LibraryCore.csproj": {
+              "projectPath": "C:\\Work\\LibraryApi\\LibraryCore\\LibraryCore.csproj"
             }
           }
         }
@@ -805,7 +807,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

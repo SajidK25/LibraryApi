@@ -11,3 +11,16 @@
 /Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/obj/Debug/netcoreapp2.2/WebAPI.Library.csproj.CopyComplete
 /Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/obj/Debug/netcoreapp2.2/WebAPI.Library.dll
 /Users/sajidMacPro/Projects/LibraryApi/WebAPI.Library/obj/Debug/netcoreapp2.2/WebAPI.Library.pdb
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\WebAPI.Library.deps.json
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\WebAPI.Library.runtimeconfig.json
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\WebAPI.Library.runtimeconfig.dev.json
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\WebAPI.Library.dll
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\WebAPI.Library.pdb
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\LibraryCore.dll
+C:\Work\LibraryApi\WebAPI.Library\bin\Debug\netcoreapp2.2\LibraryCore.pdb
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.csprojAssemblyReference.cache
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.AssemblyInfoInputs.cache
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.AssemblyInfo.cs
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.csproj.CopyComplete
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.dll
+C:\Work\LibraryApi\WebAPI.Library\obj\Debug\netcoreapp2.2\WebAPI.Library.pdb

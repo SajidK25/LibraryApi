@@ -169,15 +169,23 @@ namespace WebAPI.Library.Test
             var bookRepositoryFake = _mock.Mock<IBookRepository>();
             var libraryUnitOfWork = _mock.Mock<ILibraryUnitOfWork>();
 
-            bookRepositoryFake.Setup(x => x.GetSingleBook(barcode));
+            bookRepositoryFake.Setup(x => x.GetSingleBook(barcode)).Returns(aBook);
             libraryUnitOfWork.Setup(x => x.BookRepository).Returns(bookRepositoryFake.Object);
 
             _libraryManagementService = _mock.Create<LibraryManagementService>(new TypedParameter(typeof(ILibraryUnitOfWork), libraryUnitOfWork.Object));
 
             // Act
-            _libraryManagementService.GetBook(barcode);
+            var book = _libraryManagementService.GetBook(barcode);
 
             // Assert
+            book.ShouldNotBeNull();
+
+            //book.ShouldBe(aBook);
+
+            this.ShouldSatisfyAllConditions(
+                () => book.Title.ShouldBe(aBook.Title),
+                () => book.Barcode.ShouldBe(aBook.Barcode),
+                () => book.CopyCount.ShouldBe(aBook.CopyCount));
 
             bookRepositoryFake.VerifyAll();
         }
@@ -259,6 +267,9 @@ namespace WebAPI.Library.Test
         public void SaveReturnBook_WhenHasReturnDelay_FineCalculationAndUpdate()
         {
             // Arrange
+            const int expectedCopyCountAfterReturn = 11;
+            const decimal expectedFineAmount = 340;
+
             var aIssuedBook = new BookIssue
             {
                 StudentId = 1001,
@@ -298,7 +309,8 @@ namespace WebAPI.Library.Test
             returnBookRepositoryFake.Setup(x => x.InsertReturnBook(newReturnBook));
             bookRepositoryFake.Setup(x => x.GetSingleBook(newReturnBook.Barcode)).Returns(aBook);
             returnBookRepositoryFake.Setup(x => x.IncreaseBook(aBook));
-            bookIssueRepositoryFake.Setup(x => x.SelectIssueDate(newReturnBook.StudentId, aBook.Barcode)).Returns(aIssuedBook.IssueDate);
+            bookIssueRepositoryFake.Setup(x => x.SelectIssueDate(newReturnBook.StudentId, aBook.Barcode))
+                .Returns(aIssuedBook.IssueDate);
             returnBookRepositoryFake.Setup(x => x.UpdateFine(aStudent));
             studentRepositoryFake.Setup(x => x.GetSingleStudent(newReturnBook.StudentId)).Returns(aStudent);
 
@@ -307,19 +319,22 @@ namespace WebAPI.Library.Test
             libraryUnitOfWorkFake.Setup(x => x.BookIssueRepository).Returns(bookIssueRepositoryFake.Object);
             libraryUnitOfWorkFake.Setup(x => x.StudentRepository).Returns(studentRepositoryFake.Object);
 
-
-
-            _libraryManagementService = _mock.Create<LibraryManagementService>(new TypedParameter(typeof(ILibraryUnitOfWork), libraryUnitOfWorkFake.Object));
+            _libraryManagementService = _mock.Create<LibraryManagementService>(
+                new TypedParameter(typeof(ILibraryUnitOfWork), 
+                libraryUnitOfWorkFake.Object));
 
             // Act
             _libraryManagementService.SaveReturnBook(newReturnBook);
 
             // Assert
+            aBook.CopyCount.ShouldBe(expectedCopyCountAfterReturn);
+            aStudent.FineAmount.ShouldBe(expectedFineAmount);
 
             returnBookRepositoryFake.VerifyAll();
             bookRepositoryFake.VerifyAll();
             bookIssueRepositoryFake.VerifyAll();
             studentRepositoryFake.VerifyAll();
+            libraryUnitOfWorkFake.VerifyAll();
         }
     }
 }
